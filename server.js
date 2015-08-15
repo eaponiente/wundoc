@@ -15,15 +15,25 @@ io.sockets.on('connection', function(socket){
 	socket.on('register_user', function(data){
 		redisClient.incr('user:ids', function(err, id){
 			redisClient.hmset('users:' + id, data);
+			redisClient.rpush('user_ids', id);
 			console.log('User registered!');
 		});
 	});
 
-	socket.on('get_data', function(){
-		redisClient.hgetall('users', function(err, reply){
-			socket.emit('pass_data', reply);
+	socket.on('get_ids', function(){
+		redisClient.lrange('user_ids', 0, -1, function(err, reply){
+			socket.emit('pass_id', reply);
 		});
 	});
+
+	socket.on('get_user', function(data){
+		redisClient.hgetall('users:'+ data, function(err, res) {
+			socket.emit('user', res);
+		});
+	});
+
+
+
 });
 
 app.get('/testing', function(req, res){
