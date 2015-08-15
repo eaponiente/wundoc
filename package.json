@@ -1,0 +1,11 @@
+{
+   "name": "WunDoc",
+   "description": "Real Time Doc Locator",
+   "author" : "Edgar Allan Poniente",
+   "version": "0.0.1",
+   "dependencies": {
+      "express": "3.3.8",
+      "socket.io" : "latest",
+      "redis" : "latest"
+   }
+}
