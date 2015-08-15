@@ -38,3 +38,18 @@
 {
 	padding: 10px 0px;
 }
+
+.product-info label
+{
+  font-size: 20px;
+}
+
+.form-group .bottom-dotted
+{
+  border-bottom: 1px dotted #DDD;
+}
+
+.dateadd .col
+{
+  border-bottom: none;
+}
